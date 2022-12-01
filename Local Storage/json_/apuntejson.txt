@@ -1,0 +1,30 @@
+<----------------------->
+JSON = JAVASCRIPT OBJET NOTATION.
+Es un formato de texto sencillo/texto plano (no tiene formato) para intercambiar datos.
+Cuando se trae el texto como JSON (Es un strig) no tiene metodos, tenemos que desconvertirlo
+de nuevo a objeto JAVASCRIPT. aplica a los arrays tambien.
+es un proceso de conversion > guardo > traigo > desconvierto. 
+esto hay que hacerlo cuando queremos enviar un objeto js al servidor o almacenarlo al localstorage
+
+Los dos metodos a usar son: Stringify y Parse
+
+* Stringify: acepta un objeto como parametro y devuelve el texto como JSON  
+* Parse: rebibe el txto JSON como párametro y devuelve objeto js
+
+const array_usuarios = [];
+
+const datos_usuario = () => {
+    const nombre = document.getElementById("nombre");
+    const apellido = document.getElementById("apellido");
+    
+    const usuario = {"nombre": nombre.value,
+                     "apellido": apellido.value
+    };
+
+    const usuario_json = JSON.stringify(usuario);
+    array_usuarios.push(usuario_json);
+    localStorage.setItem("usuarios", array_usuarios);
+};
+
+const boton = document.getElementById("enviar");
+boton.addEventListener("click", datos_usuario); 

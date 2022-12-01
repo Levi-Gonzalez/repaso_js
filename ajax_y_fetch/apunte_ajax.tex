@@ -1,0 +1,43 @@
+¿Que es Ajax?
+* Es una forma de enviar o recibir una información sin tener que estar recargando la página.
+* Através de ajax podemos traer información para completar.
+* Es un conjunto de técnicad  que permite que las aplicaiones web funcionen de manera asincrónica. es decir, parte de lo que es js asincrónico.
+
+Peticiones http : hypertext - transfer - protocol. 
+Cuando emitimos una orden al navegador, hace una petición (request).
+cuando el servidor da:
+200: va correcta ✔
+400 (...) : quiere decir que el servidor esta funcionando, pero no encuentra lo que el usuario esta buscando. | el URL esta mal | el sitio no existe más.
+404: el archivo no se encontró 🤔
+500: problema en el servidor directo, quiere decir que no se pudo conectar con el servidor. | esta caido ❌| esta "palmado" ❌.
+
+la peticiones http estan compuestas por:
+- url donde se va a pedir ese recurso. 
+- un método (get, post, put, delete y más pero eso son los más importantes).
+- headers
+- body
+- parametros (query params o url params )
+- el método por default es el get.
+________________________________________________________________________________________________________________________________________________________________
+
+Método: es la forma con la que interactuamos con el servidor.
+GET: Cuando hacemos una peticion, trae información/trae datos(www.google.com).
+POST: Manda la data. Ej: en el backend cuando se llena un formulario de alta, se usa el método "post".  
+PUT: Similar al post porque envia datos tambien, pero esta pensado para crear, principalmente modificar. Manda una petición de modificación.
+DELETE: Sirve para elminar algún recurso en el servidor.
+
+POST y PUT: 
+Son las unicas peticiones que van acompañada de un body (cuerpo de la petición/ request)
+¿Por qué tienen un cuerpo?
+Porque necesitan enviar data para modificar y hacer altas.
+________________________________________________________________________________________________________________________________________________________________
+
+Headers: Las cabeceras (header) http, nos permite hacer determinadas especificaciones para que cuando yo mande o reciba la petición salga correcta.
+Parámetros: Son los que estan en la URL, los  #Query params o #URL params               
+    
+    
+                                                                            ______
+
+                                                                            30:00
+                                                                            _______
+

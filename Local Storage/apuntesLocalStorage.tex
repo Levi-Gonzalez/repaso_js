@@ -1,0 +1,44 @@
+Donde encontrarlo ? 
+aplicación>almacenamiento local> http:// ...
+
+ Set Item: Almacena informacion. se guarda en formato cadena de caracteres (DOM string) 
+Que podría almacenar? objetos qque se pueda llevar a una base de datos, ID de producto. NO guardar datos sencibles como clave, numero de tarjeta etc.
+
+# Get Item:  accede a la info, TODO lo que se guarda en el local Storage lo retorna como string
+    
+    #IMPORTANTE#
+    hay que poner el noombre de la clave que va a traer ya que el valor es lo que nos retornara.
+    ej:
+    
+    
+    const usuario = localStorage.getItem("cliente_uno")
+    let recuperando_json = localStorage.getItem ("¡¡¡nombre de la clave que va a traer!!!").
+
+#Session Storage: La variable existe hasta que el usuario cierre la pestaña. Solo existe dentro de la pestaña actual del navegador.
+ 
+<Donde usar Local Storage?>
+si quisieramos pasar un archivo a otro archivo.
+
+<Session Storage:>
+no podría hacer esto porque si quisieramos pasar un archivo a otra pestaña el dato no existe más.
+
+localStorage.length:
+nos devuelve el largo del localStorage es decir, cuantos elementos tiene 
+
+#NO se puede recorrer con un for of y tampoco un for in porque no es un objeto iterable. 
+
+¿como recorrer el localStorage? 
+for (let i = 0; i < localStorage.length; i++) 
+
+{                                           //esta es la manera para recorrer ya que 
+    const abc = localStorage.key(i)
+    console.log(abc es: ${abc})
+
+}
+
+el método que vamos a usar es key quien nos devolvera la llave de cada uno de los elementos del localStorage
+
+Métodos:
+remove elimina un item ("nombre de la clave") va entre va entre comillas.
+clear elimina TODO
+

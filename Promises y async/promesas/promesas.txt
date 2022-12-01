@@ -1,0 +1,96 @@
+PROMESAS:
+es un objeto de js que representa un evento a futuro. 
+Es una acción asincronica y las promesas pueden ser resueltas ✔ o rechazadas 😣
+sirve para trabajar con operacions async y para no tener problema con el callback hell.
+profesor: es un intermediario entre el ejecutor y las funciones consumidoras.
+
+
+se crean a través de su contructor "new Promise".
+recibe una funcion por parametro que se llama funcion ejecutadora, que a su vez recibe por 
+parametro 2 callbacks: RESOLVE Y REJECT. Al momento de construirse la promesa se ejecuta la funcion ejecutadora.
+resolve: cuando la terea suceda con éxito.
+reject: tarea rechazada.
+
+#Funcion ejecutadora/Calback: es la encargada de producir el código. quiere decir que la operacion async va ocurrir adentro
+de la función o cuerpo de la función 
+
+cuenta con 3 estados: podemos tenerlo dentro de una promesa.
++ Pending/pendiente: es cuando la promesa esta esperando. Una promesa se retorna con estado pending. entendiendo que el valor a generar no fue resuelto.
++ Fulfilled/satisfecho/completado:
++ Rejected/rechazado:
+
+ej:      a promise → se le pasa la funcion ejecutadora 
+    new Promise( (resolve, reject) => {
+                   //| →     |→ ESTAS CALLBACK SON LAS FUNCIONES CONSUMIDORAS QUE ESTAMOS USANDO (THEN Y CATCH)
+        //cuerpo de la promesa
+    })
+Esta función retorna una promesa que no se resuelve. Por lo tanto, veremos que el valor que genera es un objeto Promise con estado pendiente.
+
+- El valor de retorno de la promesa se define a través del llamado a las funciones de resolve o reject:
+* Si el CUERPO de la promesa llama a resolve(), la promesa cambiará su estado a fulfilled, con el valor enviado a resolve().
+* Si la PROMESA llama a reject(), cambiará su estado a rejected con el valor enviado al reject().
+
+
+const agregar_carrito = new Promise (function (resolve, reject){
+
+    setTimeout(() => {  //el profesor simulo una operacion async por eso uso el setTimeout
+        
+        dentro de esta funcion ejecutadora vamos a tener que hacer el código por si se cumple la promesa o el código por 
+        si no se cumple, quiere decir por si falla (reject) la operación async se cumple (resolve).
+        profesor>promesa: es un link entre el ejecutador que es esta funcion y a su vez va a producir todo este código
+        y toda la operacion async. El resultado lo va a obtener el ejecutador y las funciones consumidoras 
+        
+
+        const tiempo_carga = Math.random(); // tira numero entre 0.1/0.9
+        if (tiempo_carga < 0.5 ) {  //se va a estar generando numeros al azar con el math y nos daran muchos resultados que se resuelva *-
+
+            carrito.push("producto x")      // acá podría llegar los datos de una api. Si los datos llegan bien, entonces sera consumido por el then y catch 
+            resolve(carrito)  // se esta llamando un calback
+        }
+        else{
+            reject("No se pudo cargar el producto!!") // -* y se rechace la operación.
+        }
+    }, 1000) ; 
+
+})           
+X|X|X|X|X|X|X||X|X|X|X|X|X| ↓ DE ESTA MANERA NO SE PUEDE CONSUMIR EL CÓDIGO ↓  |X|X|X|X|X|X|X|X|X|X|X
+                                        console.log(agregar_carrito); 
+
+
+¿Cómo consumir el código de una promesa ?                                                       
+Se consume con los métodos then, catch y finally.
+
+Then: caso de que la promesa se cumpla.
+Catch: caso de que la promesa no se cumpla, que básicamente se rechace.
+
+el código generado, por las funciones ejecutadoras no se puede consumir directamente del objeto promesa.
+no se puede poner: agregar al carrito.abc() NO SE PUEDE! ❌❌❌
+
+para eso estan los metodos then y Catch
+*/
+
+                                agregar_carrito
+                                    console.log("se cumple");               
+                                    console.log(carrito);  es para ver que es lo que tiene adentro.
+                                })
+                                .catch((error)=>{    
+                                    console.log("no se cumple");
+                                    console.log(error);
+                                })
+                                .then((carrito)=>{  
+
+el then estaría ejecutandose si la funcion async se haya cumplido exitosamente! (lo estamos forzando en este caso)
+quiere decir que se haya ejecutado el resolve. Entonces se crea una funcion que la va a consumir, la 
+que le va a llegar el valor que pasa RESOLVE. (carrito).
+
+IMPORTANTE: Las promesas siempre van a tener 2 propiedades, la primera es el estado y la segunda es el valor que esta retornando las promesas.
+Cuando esta en pendiente esta retornando indefinido quiere decir que no tiene valor o como se resolvio la promesa
+
+Resumen: 
+la funcion ejecutadora tiene que producir código para que sea consumido que va a estar disponible en un X tiempo.
+cuando termina se guarda un objeto en la variable donde se creo la promesa y nos dice: se resolvió, este es el resultado 😁✔ | se rechazo ❌ este es el resultado
+las funciones consumidoras son las unicas que pueden consumir el código que genero la funcion ejecutadora (✨ then & catch ✨).
+Then: Recibe el resultado que se mando por resolve, y ese valor se agrega al then. ejemplo: (carrito)
+Catch: Recibe el resultado que se mando por reject es el valor que tenemos que agregar en el catch.
+Finally: es el ultimo método que no recibe nada por parametro y es un método de limpieza, se cumpla o no se ejecuta SIEMPRE.
+≠

@@ -1,0 +1,142 @@
+#DATO: 
+$JS es un lenguaje de un único hilo lo que tiene un unico Stack de ejecución que es sincrónica.
+
+¿Como darnos cuenta cuando un método es async?
+Es async cuando lo manejamos através de una función.
+
+async quiere decir que la terea arranca y no termina en el momento mientras tanto se van a ejecutar otras tareas
+
+#Set time out: tranaja con asincronismo, permite ejecutar una determinada funcion  en un determinado tiempo.          
+function saludar() {
+    console.log("Hola");
+}
+  ↓→ se llamo a la funcion, ejecutate 3sg, se cejecuta el console... siguiendo ejecutandose lo de abajo
+setTimeout(saludar, 3000);
+             ↑→ (es un callback)
+ console.log("Hola, soy set time out.");
+
+una vez que termina el tiempo puesto, se ejecuta la funcion saludar.
+
+# call Stack (pila):
+es donde se apilan distintas tareas para ejecutarse.
+
+# Call Back Queue:
+
+es donde se apilan los procesos asincronicos. Una vez que se hayan finalizado todos los procesos sincronicos ahi pasa a la pila donde estaban
+las funciones sincronicas, si estas no terminan de ejecutarse entonces la funcion asincronica nunca podran apilarse en ese lugar y esperaran a que lo hagan
+no importa si tiene un inintervalo de tiempo 0 sigue siendo async.
+
+Resumen ↑ : NINGUN PROCESO ASYNC SE PUEDE EJECUTAR EN EL CALLSTACK HASTA QUE LOS SINCRONICOS TERMINEN.
+
+########## EVENT LOPP #########
+Es el que permite la sincronizacion entre el callstack y con tareas asincronicas. Si el stack esta vacío, el event loop es el encargado que
+envía la primera funcion que esta en el callback queue al callstack para que se ejecute.
+criollo: el que manda la funcion asincronica al stack sincronico.
+
+## ¿Que es un callback= es una funcion que llega por parametro ## 
+
+                  let carrito = []
+
+                  function agregar_carrito (){
+
+                      setTimeout (function (){
+                          carrito.push ('producto "X"');
+                      }, 2000);
+                      
+                  }
+
+agregar_carrito();
+console.log(carrito);
+
+se guarda la funcion en memoria, se ejecuta la funcion "agregar_carrito" pero esta funcion tiene un proceso ASYNC que es el que hace el push,
+y despues se ejecuta el console.log.
+lo vemos en consola y esta vacío.
+¿POR QUÉ?
+Porque en el momento que se ejecuta ese console el setTimeout se queda esperando 2seg y ahí esta el problema con lo ASYNC.
+Las cosas ASYNC tienen que esperar a que finzalicen los sincronicos y el carrito tarda 2 segundos en cargarse...
+Como se resuelve este problema?
+La primera es usar un CALLBACK. Es la que nos asegura de que una funcion no termine hasta que no se termine un determinado
+proceso. 
+Yo quiero que agregar_carrito no se termine hasta que el producto  se haya agregado al carrito realmente. 
+Prque como vimos el carrito esta terminando antes de que el producto se cargue.
+
+le agregamos una calback yq uedaría así 
+
+                  let carrito = []
+
+              function agregar_carrito (CALLBACK){
+                            
+              setTimeout (function (){
+              carrito.push ('producto "X"');
+              calback();           ← //Es acá donde lo ejecutamos.Entonces decimos, no ejecutes el console.log de (la línea 66 )
+              }, 2000);               //hasta que me asegure que se haya pusheado el producto al carrito. 
+                                      // una vez pusheado el producto ejecuta el callback. y despues finaliza!
+            }
+agregar_carrito(funcion(){
+   console.log(carrito)
+   });
+
+
+Calback tiene problemas, si quieiseramos agregar multiples carritos en un intervalo de tiempo 2seg + 2seg, + 2 seg = termina sumando 8 seg en total.
+ademas el codigo seria insostenible por que sucederia esto:
+
+agregar_carrito(funcion(){          se agrega al carrito, se pasa el callback, espera 2 seg, se resuelve y se llama de nuevo... ↓
+  console.log(carrito)              
+    agregar_carrito(funcion(){      se agrega al carrito, se pasa el callback, espera 2 seg se resuelve y se llama de nuevo...  ↓  
+      console.log(carrito)
+        agregar_carrito(funcion(){  se agrega al carrito, se pasa el callback, espera 2 seg se resuelve y se llama de nuevo...
+          console.log(carrito)
+   });
+   });             todo esto se le llama CALBACKHELL = si tenemos procesos que hacen multiplescallback y estan anidados el codigo se pone feo.
+   });
+
+como se resuelve las callbackhell ?  con promesas 🎇✔
+cuando tengamos multiples callback las promesas simplifican ese problema.  
+
+
+Set Interval: 1) ejemplo
+
+                function color () {
+                    let fondo = document.body;
+
+                    if (fondo.style.backgroundColor == "red")
+                    {
+                        fondo.style.backgroundColor = "navy"
+                    }
+                    else {
+                        fondo.style.backgroundColor = "red"
+                    }
+                }
+                
+                let frecuencia_color = setInterval(color, 500)
+
+                function limpiar (){
+                    clearInterval(frecuencia_color)
+                }
+
+const boton = document.getElementById("boton");
+boton.addEventListener("click" , limpiar)
+
+# 2) ejemplo:
+                let contador = 0;
+
+                const intervalo = setInterval(()=>{
+
+                    contador ++
+                    console.log(`el contador es: ${contador}` );
+                    if (contador >= 10){
+                        clearInterval(intervalo)
+                        console.log("se detuvo.");        
+                    }
+                },1000)
+
+Ejemplo hecho en setTimeout:
+
+              console.log("Inicio")
+
+              const fin = setTimeout(() => {
+                  console.log("fin")
+              }, 2000)
+
+              clearTimeout(fin) //nunca llega a ejecutarse porque lo esta deteniendo
+

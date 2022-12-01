@@ -1,0 +1,46 @@
+DOM es un objeto
+nodo = objetos
+
+siempre que accedamos a multiples, a un nodo, o un nodo vacío
+si lo llamamos con la propiedad class/tagName siempre recibiremos un array (QUE NO ES UN ARRAY PERO ES PARECIDO)
+podemos acceder mediante sus indices [0][1]... o el metodo "for of"
+
+# Inner text
+
+modificamos los nodos
+
+# Modificamos el contenido del html de un nodo.
+
+Esto no se puede hacer ya que por cascada siempre tomara al de abajo:
+
+# let contenedor = document.getElementById ("contenedor") _→ (CONTENEDOR PADRE DE DIV) ←_
+
+    contenedor.innerHTML = "<p>soy un cont enido creado en JS</p>"
+    contenedor.innerHTML = "<p>otro parrafo"
+
+innerHTML pueden haber muchos elementos pero solo uno a la vez.
+
+podemos crear class desde js
+contenedor.innerHTML = "<p class='color'>soy un contenido creado en JS</p>"
+No es muy frecuente usarlo pero de una manera que se usa es para hacer el DARKMODE.
+
+---
+
+# Podemos crear nodos desde JS con el método
+
+es un nodo suelto entonces tenemos que asociarlo al HTML: "CreateElement"
+
+    let texto = document.createElement ("p")
+    texto.innerHTML = "HOLA SOY UN TEXTO"
+    document.body.append(texto)
+
+_¿Para que sirve appendChild?_
+Es un método del padre el padre de "p" que sería _let contenedor_ que ya lo tenemos en el HTML.
+Entonces decimos que al _contenedor padre_ agregale este nuevo hijo (appendChild)
+quien seria este nuevo hijo? el DIV
+
+        let nombreVariable = document.createElement ("nodo a crear")
+        nombreVariable.innerText = "Este texto fue creado con appendchil "
+        _contenedor padre_.appendChild (nombreVariable)
+
+\dds/

@@ -1,0 +1,17 @@
+body {
+  background-color: rgb(97, 15, 4);
+  color: white;
+}
+
+.fondo {
+  background-color: rgb(59, 112, 7);
+}
+.productos {
+  display: flex;
+  /* text-align: center; */
+  justify-content: space-around;
+}
+.guerrero_Z {
+  display: flex;
+  justify-content: space-evenly;
+}

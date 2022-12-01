@@ -1,0 +1,59 @@
+Async await: $Ahorra los then$
+Async = es una funcion.
+
+¿Como darnos cuenta cuando un método es async?
+Es async cuando lo manejamos através de una función.
+
+await:
+# Solamente funciona con funciones Async
+# Quiere decir como : espera,  porque esto necesita un tiempo para responder.
+
+%¿Cuando sabemos que hay que usar await?
+- Cuando guardamos una respuesta en una variable.
+%¿Como utilizar await?
+- La función tiene que ser Async
+
+%¿Cómo defino una funcion Async?
+- Agregandole Async antes del function.
+
+%¿Pero como hago que funcione?
+$ Tiene que estar adentro de una funcion async$
+
+{Crear un setTimeOut}
+Hay que importarlo con el modulo de NODE y se llama UTIL.
+
+ej: 
+
+const respuesta = async function (){
+    let resultado = await fetch ("https://pokeapi.co/api/v2/berry/10")
+    console.log (resultado)
+}
+
+cuando se ejecute esta funcion async y lea el https va a decir: "espera que estoy esperando esta respuesta del pro ceso async"
+una vez que este proceso async termine el console se ejecutara.
+
+const util = require ('util')
+const sleep = util.promisify(setTimeOut)
+este modulo nos trae a 'promisify' convierte a las funciones que se manejan con callbacks a funciones que se manejan con promesas o async await...
+Con esto decimos que queremos convertir a 'setTimeOut' de un callback a una promesa. Luego, la guardamos a una variable.
+Entonces este código tiene la misma funcion que 'setTimeOut' pero lo puedo ejecutar através asyn await.
+Cada vez que la querramos usar tenemos que poner : $ await sleep ()  $
+adentro va como parametro el tiempo que quiero que espere: $  await sleep(2000)  $
+
+Quedaría asi:
+const util = require('util');
+const sleep = util.promisify(setTimeOut);
+
+module.exports = {
+
+    async taksOne(){
+        await sleep (4000)
+        return "One love"
+    },
+    async taskTwo(){
+        sleep(2000)
+        return "Take away"
+    }
+
+
+}

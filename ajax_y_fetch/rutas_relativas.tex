@@ -1,0 +1,13 @@
+Ruta relativa:
+Es cuando la url no contiene "https".
+Podemos hacer la petición desde un archivo local formato JSON usando el fetch.
+
+fetch('/ruta_relativa.json') → Json lpcal (si esta guardado en carpeta ./ o ../ si no esta en carpeta y esta en el mismo lugar que los otros archivos poner como esta ahí.)
+.then(res=>res.json())
+.then(data=>{console.log(data)});
+
+¿Pero porque no funciona?
+Porque fetch hace una peticion http, manda una peticion al servidor local, al no tenerlo falla. Entonces no habrá manera de que funcione.
+
+¿Como hacer que funcione?
+Levantando un server o con el live server de VS.

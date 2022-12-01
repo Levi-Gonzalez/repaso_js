@@ -1,0 +1,24 @@
+creamos el boton con su ID respectivo
+creamos la variable con el elemento id
+creamos una funcion ejemplo que salude
+llamamos el nombre de la varibale y le ponemos un punto y dentro de los parametros llamamos al evento que vamos a solicitar
+ej: "Click" y adentro el nombre de la funcion sin el parentesis ya que estamos pasando una referencia
+a la funcion.
+Es decir, cada vez que se ejecuta esta callback esjecuta esta funcion.
+el objeto evento = e nos da informacion donde se esta pasando el evento que se esta clickeando, cordenadas.
+
+# Diferencias: EVentolistener y Change.
+
+change : Sirve para cuando hay cambios en el input, se ejecuta cuando haya un cambio y sacar el mouse.
+Se usa cuando estas usando un formulario, salis del input y bos dice las recomendaciones a medida que escribimos
+
+Submit: sirve para formularios.
+El sitio va hacer una peticion en la que se va a madar los datos del formulario.
+
+Generalemnte cuando clickeamos el boton ENVIAR finalizado el formulario los datos se pierden, ¿Porqué?
+porque al recargar la pagina nos redirijimos al mismo HTML que esta vacío, entonces el evento no se ejecuta ya que el submit lo esta pisando.
+Que debemos hacer para que esto no suceda?
+
+capturar el evento "Submit"
+
+preventDefault(): Es un metodo que previene que se mande por defecto, le dice: "no te ejecutes porque quiero capturar los datos" no olvidar que al final va ()

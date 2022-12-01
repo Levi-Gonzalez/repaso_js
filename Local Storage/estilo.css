@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.cont {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+input {
+  margin: 20px;
+  padding: 2rem;
+  background-color: grey;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: x-large;
+}
+.enviar {
+  padding: 2rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}

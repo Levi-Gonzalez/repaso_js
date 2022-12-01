@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(14, 75, 145);
+  transition: all 0.4s;
+}
+h1 {
+  margin-top: 3rem;
+  text-align: center;
+}
+.contenedor_input {
+  margin: 30px;
+  text-align: center;
+}
+input {
+  margin: 10px;
+  padding: 4px;
+}
+.boton_padre {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem;
+}
+.boton {
+  padding: 15px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: white;
+}
+.boton_enviar {
+  padding: 7px;
+  background-color: rgb(83, 97, 66);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.parrafo {
+  color: white;
+  text-align: center;
+}
+
+/* DARK MODE */
+
+body.darkmode {
+  background-color: rgb(32, 32, 44);
+  color: white;
+}
+
+.darkmode .boton {
+  background-color: rgb(128, 128, 26);
+}
+.darkmode h1 {
+  color: rgb(155, 150, 150);
+}
+.darkmode p {
+  color: rgb(155, 150, 150);
+  font-size: larger;
+}
+.darkmode input {
+  padding: 4px;
+  background-color: rgb(55, 55, 75);
+  color: white;
+  margin: 10px;
+}

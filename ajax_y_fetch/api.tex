@@ -1,0 +1,22 @@
+
+API:
+Esta orientada a recursos (Google, google maps, Mercago pago) define métodos claros para solicitar y enviar información.
+Es una app web construida en basde de arquitectura {API REST}.
+Es un interface que lo que va hacer es permitir y simplificar la comunicación.
+En criollo:    **Pide datos, envía datos.**y define métodos claros para solicitar
+
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires&lang=es&units=metric&appid=40bd2b1ad316c3881f2ad4c31a6df9e8")
+                                                              ↓
+se agrega al espacio automaticamente en el navegador agregando un: %
+&: se usa para separar cada parámetro del que se este hablando la URL. ej: lang=es, &units = metric.   (unidades de escala que usamos en Arg.)
+______________________________________________________________________________________________________________________________________________
+
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires&lang=es&units=metric&appid=40bd2b1ad316c3881f2ad4c31a6df9e8")
+.then (response => response.json()) 
+                    % ∟→ esta funcion anonima retorna ese objeto respuesta que no es consumible.
+                    % Entonces retorna el body de la respuesta convertido a JSON. %#
+.then (data => {
+        %# En data se guarda: el body de la respuesta convertido a JSON%
+    console.log("LA temperatura maxima es ", data.main.temp_max);
+    console.log("LA temperatura minima es ", data.main.temp_min);
+});
