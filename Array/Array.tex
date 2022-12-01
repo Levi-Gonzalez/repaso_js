@@ -1,0 +1,123 @@
+
+//PUSH
+listaDeUsuarios.push("Fernando", "Rosana"); // metodo push, agrega al final
+console.log(listaDeUsuarios); // RESULTADO DESPUES DEL PUSH
+
+//UNSHIFT
+listaDeUsuarios.unshift ( "Blanca") //metodo unshift, agrega al principio
+
+//POP
+listaDeUsuarios.pop() //No lo elimina, lo saca y lo retonrna.
+console.log("POP" , listaDeUsuarios);
+
+//SHIFT
+listaDeUsuarios.shift() //Saca al primero
+console.log("SHIFT" , listaDeUsuarios);
+
+//SPLICE
+listaDeUsuarios.splice(2,1 , "valor-Agregado-con-splice") //Saca la cantidad que yo quiera atraves de parametros, el 1er parametro nos dice DESDE y el 2do CUANTOS.
+//Y desde esa posicion tambien podemos agregar un nuevo valor
+console.log("SPLICE", listaDeUsuarios);
+
+//JOIN
+let resultado = listaDeUsuarios.join (" | ") //transforma todos los elemtos del array en un string y su funcion es con que caracterer separo cada string
+console.log("JOIN:" , resultado);
+console.log("Join:", listaDeUsuarios.join (" \*\*\* "));
+
+//CONCAT
+let colores = ["Azul", "Amarillo" , "Rojo"] //fusiona 2 arrays en uno nuevo, es decir habría un 3er array nuevo, el que va ultimo se agrega a lo ultimo.
+let nuevaLista = listaDeUsuarios.concat(colores)
+console.log("CONCAT:" , nuevaLista);
+
+//SLICE
+let corte = nuevaLista.slice (2,4) //Corta desde el numero indicado Hasta el otro, el ULTIMO NO ESTA INCLUIDO, por lo que es el anterior al ultimo
+//luego retorna los que corto mostrandolos en consola
+console.log("SLICE:" , corte);
+
+//iOF
+//NOs retorna el indice de un array, tenemos que poner el elemento que buscamos en eel array si no existe nos retorna -1
+console.log("iOF", nuevaLista.indexOf("Basti")); //0
+console.log("INDEXOF", nuevaLista.indexOf("Azul")); //7
+console.log("INDEXOF", nuevaLista.indexOf("verde")); //-1 porque no existe
+
+//COMBINACION DE: INDEXOF y SPLICE
+let borrar = nuevaLista.indexOf ("Fernando") //lo ubicamos en el array
+nuevaLista.splice (borrar, 1) //eliminamos elementos puntuales, si no especificamos la cantidad borra desde ahí para atras
+console.log("INDEXOF y SPLICE:" , nuevaLista); //Esta es la manera de borrar elementos de un array! 😉
+
+//INCLUDES
+let includes = listaDeUsuarios.includes("rita") //Si existe en el array devuelve TRUE, si no existe FALSE
+console.log(includes);
+
+//REVERSE
+nuevaLista.reverse() //Invierte o modifica el array original
+console.log(nuevaLista);
+
+FOR...OF
+RECORRE EL ARRAY ejecutando un bloque de codigo por cada elemento del OBJETO
+Si tiene 20 alumnos → 20 vueltas, 50 usuarios → 50 vueltas, 1000 personajes → 1000 vueltas
+Es decir, los separa cada objeto por separado
+
+# 7
+
+/\*ForEach → metodo de orden superior.
+
+let numeros = [1,2,3,4,5,6,7,8,9]
+numeros .forEach(num => {
+console.log("El numero es" + " " + num);
+console.log("El doble del numero es" + " " + num*2);
+});
+*/
+
+/\* Find → busca y retorna el primero que encuentra
+
+const usuarios = [
+{nombre: "Basti", apellido: "Gonzalez", edad:2, DNI: 58205741},
+{nombre: "Jere", apellido: "Gonzalez", edad:15,DNI: 123456789},
+{nombre: "Santi", apellido: "Gonzalez", edad:13, DNI:987456321}
+]
+
+const buscarNombre = (usuarios) =>{
+return usuarios.DNI == 58205741
+}
+let resultado_find = usuarios.find(buscarNombre)
+console.log(resultado_find);
+\*/
+
+/\*Filter → Retorna el arreglo con los elementos que cumplieron con esa condicion.
+Se utiliza para quitar un elemento de un arreglo ej : si nombre !== Basti entonces nos deolvera "Jere" , "Santi"
+const usuarios = [
+{nombre: "Basti", apellido: "Gonzalez", edad:2, DNI: 58205741},
+{nombre: "Jere", apellido: "Gonzalez", edad:15,DNI: 123456789},
+{nombre: "Santi", apellido: "Gonzalez", edad:13, DNI:987456321}
+]
+
+const mayor_de_edad = (usuarios) =>{
+
+    return usuarios.edad >= 10
+
+}
+
+let resultado_filter = usuarios.filter (mayor_de_edad)
+console.log(resultado_filter);
+\*/
+
+let precioTotal = ventas.reduce (valorTotal, 0)
+console.log("el valor total es:" , precioTotal);
+
+En este ejercicio construiremos una herramienta que permita que diferentes personas puedan
+llevar cuentas individuales sobre algo que deseen contabilizar, al mismo tiempo que nos brinde una contabilidad
+general del total contado. Para ello:
+Definir la clase Contador.
+Cada instancia de contador debe ser identificada con el nombre de la persona responsable de ese conteo.
+Cada instancia inicia su cuenta individual en cero.
+La clase en sí misma posee un valor estático con el que lleva la cuenta de todo lo contado
+// por sus instancias, el cual también inicia en cero.
+
+
+//nombre de referencia ↓  
+for (const random of personajesFavoritos) // ← nombre de la lista/array que va a recorrer
+{
+console.log(random);
+}
+// FOR OF recorre y separa los objetos por separados.

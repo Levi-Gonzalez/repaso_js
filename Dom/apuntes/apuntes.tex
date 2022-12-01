@@ -4,76 +4,16 @@
 →¦→ (no tiene nada que ver pero me gustó ) :P
 For y While
 
-For es un bucle numerico y While es un bucle condicional
-
-For: le decimos cuantas vueltas le damos.
-
-while: (MIENTRAS)
-depende de una condicion, mientras la condicion sea "T" el bucle da vueltas, cuando deja de serlo el bucle termina
-como lo hacemos? cambiando el valor.
-Tenemos que forzarlo con un valor inicial es decir :
 
 Let nombre = "pepe" , Let sumaTotal = 0
 lo forzamos dandole un valor para que empiece dar sus vueltas
 
-Diferencias entre While y Do
-While: Primero pregunta a la condición despues ejecuta el cuerpo.
-ej: ESC. Termina la condicion es decir nunca se ejecuta
-Do: va primero, antes que el while, Da una vuelta al código, primero hace el cuerpo y depués pregunta a la condición
-ej: ESC. → Hola, bienvenido ESC. y termina el bucle
-DO. (HACER MIENTRAS)
+
 
 Funciones:😎
 Si una función es una sola línea con retorno y un parámetro puede evitar escribir los ()
 
-Objetos:🎇
 
-# METODO : es una funcion que se encuentra dentro de un objeto, funcion propia de un objeto o miembro de un objeto
-
-SON LO MISMO PERO LAS DIFERENCIAS SON ↓
-
-# Diferencias entre metodos y funciones: accedemos al metodo através de un objeto en cambio una funcion podemos acceder desde cualquier lado
-
-definición de CLASE: Plano para construír un objetos.
-
-- Las clases comienzan en mayúsculas. ej : Alumno-coder, Usuario, Empleado-home, Programador-developer etc.
-- NO es una función, es una clase.
-- La clase está compuesta por una función constructora, es el encargado de hacer los seteos iniciales.
-
-Para que los datos no sean accesibles desde afuera por usar clases:
-
-# Get y Set : se encargan de setear variables.
-
-# Getters: Trae los datos, volvemos asignar los parametros con :
-
-get_datos()
-{
-
-- console.log("nombre", this.nombre)
-- console.log("apellido" this.apellido)
-- console.log("Email" this.email)  
-}
-
-  alumno_uno.get_datos ();
-  llamamos al metodo y se encarga de traer los datos del alumno.
-
-  si después necesito acceder al usuario tendría que invocar la función
-  Usuario.get_datos();
-
-# Setters: Setea los datos, evita que asignen y accediendo a las propiedades.
-
-# Arrays 😉
-
-Metodos de array, si queremos acceder a un metodo de un array tenemos que crear un objeto antes
-Push,
-
--Pueden almacenar gran variedad de tipo objetos (String, number) o tambien un array.
--Dinamismo de tipo/equipado: las variables nunca son fijas, cambian de tipo, es decir si ponemos un valor nuevo
-no queda ese valor se superpone que es distinto entonces:
-NO SE PUEDE ASIGNAR DIRECTO, PORQUE PISO EL ARREGLO
--Son objetos iterables, significa que permite usar distintas estructuras para iterar sobre ellos.  
-¿como se accede a los arreglos?
-Atraves de sus indices
 
 
 
@@ -485,13 +425,6 @@ for (let i = 0; i < 2 ; i++) {
 
 }
 
-//nombre de referencia ↓  
-for (const random of personajesFavoritos) // ← nombre de la lista/array que va a recorrer
-{
-console.log(random);
-}
-// FOR OF recorre y separa los objetos por separados.
-
 // function sumar(primerNumero, segundoNumero) {
 // return primerNumero + segundoNumero;
 // }
@@ -662,120 +595,6 @@ console.log(listaDeUsuarios.length); //longitud
 
 console.log(listaDeUsuarios[listaDeUsuarios.length-1]); //accedemos a la ultima cadena
 
-//PUSH
-listaDeUsuarios.push("Fernando", "Rosana"); // metodo push, agrega al final
-console.log(listaDeUsuarios); // RESULTADO DESPUES DEL PUSH
-
-//UNSHIFT
-listaDeUsuarios.unshift ( "Blanca") //metodo unshift, agrega al principio
-
-//POP
-listaDeUsuarios.pop() //No lo elimina, lo saca y lo retonrna.
-console.log("POP" , listaDeUsuarios);
-
-//SHIFT
-listaDeUsuarios.shift() //Saca al primero
-console.log("SHIFT" , listaDeUsuarios);
-
-//SPLICE
-listaDeUsuarios.splice(2,1 , "valor-Agregado-con-splice") //Saca la cantidad que yo quiera atraves de parametros, el 1er parametro nos dice DESDE y el 2do CUANTOS.
-//Y desde esa posicion tambien podemos agregar un nuevo valor
-console.log("SPLICE", listaDeUsuarios);
-
-//JOIN
-let resultado = listaDeUsuarios.join (" | ") //transforma todos los elemtos del array en un string y su funcion es con que caracterer separo cada string
-console.log("JOIN:" , resultado);
-console.log("Join:", listaDeUsuarios.join (" \*\*\* "));
-
-//CONCAT
-let colores = ["Azul", "Amarillo" , "Rojo"] //fusiona 2 arrays en uno nuevo, es decir habría un 3er array nuevo, el que va ultimo se agrega a lo ultimo.
-let nuevaLista = listaDeUsuarios.concat(colores)
-console.log("CONCAT:" , nuevaLista);
-
-//SLICE
-let corte = nuevaLista.slice (2,4) //Corta desde el numero indicado Hasta el otro, el ULTIMO NO ESTA INCLUIDO, por lo que es el anterior al ultimo
-//luego retorna los que corto mostrandolos en consola
-console.log("SLICE:" , corte);
-
-//iOF
-//NOs retorna el indice de un array, tenemos que poner el elemento que buscamos en eel array si no existe nos retorna -1
-console.log("iOF", nuevaLista.indexOf("Basti")); //0
-console.log("INDEXOF", nuevaLista.indexOf("Azul")); //7
-console.log("INDEXOF", nuevaLista.indexOf("verde")); //-1 porque no existe
-
-//COMBINACION DE: INDEXOF y SPLICE
-let borrar = nuevaLista.indexOf ("Fernando") //lo ubicamos en el array
-nuevaLista.splice (borrar, 1) //eliminamos elementos puntuales, si no especificamos la cantidad borra desde ahí para atras
-console.log("INDEXOF y SPLICE:" , nuevaLista); //Esta es la manera de borrar elementos de un array! 😉
-
-//INCLUDES
-let includes = listaDeUsuarios.includes("rita") //Si existe en el array devuelve TRUE, si no existe FALSE
-console.log(includes);
-
-//REVERSE
-nuevaLista.reverse() //Invierte o modifica el array original
-console.log(nuevaLista);
-
-FOR...OF
-RECORRE EL ARRAY ejecutando un bloque de codigo por cada elemento del OBJETO
-Si tiene 20 alumnos → 20 vueltas, 50 usuarios → 50 vueltas, 1000 personajes → 1000 vueltas
-Es decir, los separa cada objeto por separado
-
-# 7
-
-/\*ForEach → metodo de orden superior.
-
-let numeros = [1,2,3,4,5,6,7,8,9]
-numeros .forEach(num => {
-console.log("El numero es" + " " + num);
-console.log("El doble del numero es" + " " + num*2);
-});
-*/
-
-/\* Find → busca y retorna el primero que encuentra
-
-const usuarios = [
-{nombre: "Basti", apellido: "Gonzalez", edad:2, DNI: 58205741},
-{nombre: "Jere", apellido: "Gonzalez", edad:15,DNI: 123456789},
-{nombre: "Santi", apellido: "Gonzalez", edad:13, DNI:987456321}
-]
-
-const buscarNombre = (usuarios) =>{
-return usuarios.DNI == 58205741
-}
-let resultado_find = usuarios.find(buscarNombre)
-console.log(resultado_find);
-\*/
-
-/\*Filter → Retorna el arreglo con los elementos que cumplieron con esa condicion.
-Se utiliza para quitar un elemento de un arreglo ej : si nombre !== Basti entonces nos deolvera "Jere" , "Santi"
-const usuarios = [
-{nombre: "Basti", apellido: "Gonzalez", edad:2, DNI: 58205741},
-{nombre: "Jere", apellido: "Gonzalez", edad:15,DNI: 123456789},
-{nombre: "Santi", apellido: "Gonzalez", edad:13, DNI:987456321}
-]
-
-const mayor_de_edad = (usuarios) =>{
-
-    return usuarios.edad >= 10
-
-}
-
-let resultado_filter = usuarios.filter (mayor_de_edad)
-console.log(resultado_filter);
-\*/
-
-let precioTotal = ventas.reduce (valorTotal, 0)
-console.log("el valor total es:" , precioTotal);
-
-En este ejercicio construiremos una herramienta que permita que diferentes personas puedan
-llevar cuentas individuales sobre algo que deseen contabilizar, al mismo tiempo que nos brinde una contabilidad
-general del total contado. Para ello:
-Definir la clase Contador.
-Cada instancia de contador debe ser identificada con el nombre de la persona responsable de ese conteo.
-Cada instancia inicia su cuenta individual en cero.
-La clase en sí misma posee un valor estático con el que lleva la cuenta de todo lo contado
-// por sus instancias, el cual también inicia en cero.
 
 class Contador {
 
